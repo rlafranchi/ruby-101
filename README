@@ -1,0 +1,30 @@
+# Resources
+Ruby Docs: http://ruby-doc.org/
+Free Ruby Book: https://launchschool.com/books/ruby
+Free Ruby OOP Book: https://launchschool.com/books/oo_ruby
+
+* Integers / Floats
+* Strings
+* Arrays
+    * iterating
+    * map
+    * group_by
+    * each / each_with_index
+    * select
+    * sort
+    * sort_by
+* Hashes
+    * iterating
+    * keys
+    * values
+    * each
+    * symbols vs strings
+* methods
+    * blocks
+    * args
+* OOP
+    * constructors
+    * instance vs class
+    * getters / setters attr_accessors
+* WEB calls
+* Files
