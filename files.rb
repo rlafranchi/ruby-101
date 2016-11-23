@@ -24,6 +24,18 @@ puts body
 # list all ruby files in current directory
 Dir["./*.rb"]
 
+# File paths
+File.join("/var", "log") # /var/log
+File.expand_path(__dir__) # current directory
+File.expand_path(__FILE__) # path to this file
+
+# FileUtils
+require 'fileutils'
+FileUtils.mkdir_p(File.join("foo","bar"))
+# => ["foo/bar"]
+
+# remove recursively
+FileUtils.rm_r("foo")
 
 # CSV
 # load the csv library
@@ -65,3 +77,12 @@ body = File.read("./test.json")
 ruby_hash = JSON.parse(body)
 p ruby_hash
 # => {:one=>"one",:two=>"two"}
+
+# Nokogiri gem: http://www.nokogiri.org/
+require 'pp'
+require 'nokogiri'
+xml_string = File.read("./google_sitemap.xml")
+doc = Nokogiri::XML(xml_string)
+urls = doc.css('loc').map { |location| location.text }
+p urls
+# => ["https://www.google.com/edu/sitemap.xml", "https://enterprise.google.com/sitemap.xml", "https://www.google.com/gmail/sitemap.xml", "https://www.google.com/forms/sitemaps.xml", "https://www.google.com/slides/sitemaps.xml", "https://www.google.com/sheets/sitemaps.xml", "https://www.google.com/adwords/sitemap.xml", "https://www.google.com/drive/sitemap.xml", "https://www.google.com/docs/sitemaps.xml", "https://www.google.com/calendar/sitemap.xml", "https://apps.google.com/sitemap.xml", "https://www.google.com/get/sitemap.xml"]

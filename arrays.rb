@@ -3,11 +3,17 @@
 arr = [1, 2, 3]
 # => [1, 2, 3]
 
+# maximum and minimum values in the array
 arr.max
 # => 3
 arr.min
 # => 1
 
+# first and last elements in the array
+arr.last # 1
+arr.first # 3
+
+arr = [1, 2, 3]
 # loop
 arr.each do |val|
   puts val

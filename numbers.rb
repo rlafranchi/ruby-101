@@ -39,3 +39,15 @@ puts "#{str}#{integer}"
 
 1.to_s
 # => "1"
+
+a = 1
+b = 2
+# a = a + b
+a += b
+# => 3
+# a = a * b
+a *= b
+# => 6
+# a = a / b
+a /= b
+# 3
