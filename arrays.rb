@@ -22,6 +22,16 @@ for i in (0..arr.size-1)
   puts arr[i]
 end
 
+for val in arr
+  puts val 
+end
+
+i = 0
+while i < arr.size
+  puts arr[i]
+  i += 1
+end
+
 # each with index
 arr.each_with_index do |val,index|
   # index: 0, val: 1
