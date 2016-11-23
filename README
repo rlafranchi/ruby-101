@@ -1,5 +1,7 @@
 # Resources
 Ruby Docs: http://ruby-doc.org/
+Ruby Gems: https://rubygems.org/
+Ruby Version Manager (rvm): 
 Free Ruby Book: https://launchschool.com/books/ruby
 Free Ruby OOP Book: https://launchschool.com/books/oo_ruby
 
@@ -19,6 +21,7 @@ Free Ruby OOP Book: https://launchschool.com/books/oo_ruby
     * values
     * each
     * symbols vs strings
+* Conditionals / Comparison Oprators
 * methods
     * blocks
     * args
@@ -26,5 +29,5 @@ Free Ruby OOP Book: https://launchschool.com/books/oo_ruby
     * constructors
     * instance vs class
     * getters / setters attr_accessors
-* WEB calls
 * Files
+* WEB calls
