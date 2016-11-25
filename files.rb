@@ -1,3 +1,5 @@
+# lates ruby versions will automatically load gems, so the following is not needed
+require 'rubygems'
 # open a new file
 
 contents = <<EOF
@@ -6,7 +8,7 @@ contents = <<EOF
 EOF
 
 puts "Writing test.txt....."
-File.open("./test.txt", 'w+') do |f|
+File.open("./test.txt", 'w') do |f|
   f.write(contents)
 end
 
@@ -26,8 +28,6 @@ Dir["./*.rb"]
 
 # File paths
 File.join("/var", "log") # /var/log
-File.expand_path(__dir__) # current directory
-File.expand_path(__FILE__) # path to this file
 
 # FileUtils
 require 'fileutils'
@@ -37,38 +37,41 @@ FileUtils.mkdir_p(File.join("foo","bar"))
 # remove recursively
 FileUtils.rm_r("foo")
 
+puts FileUtils.pwd # current directory
+
 # CSV
 # load the csv library
 require 'csv'
 
 # write to new file
-CSV.open("./test.csv", "w+") do |csv|
+CSV.open("./test.csv", "w") do |csv|
   csv << ["one", "row"]
   csv << ["another", "row"]
 end
 
 # or generate a string
-csv_string = CSV.generate do |csv|
-  csv << ["one", "row"]
-  csv << ["another", "row"]
-end
-puts csv_string
+# Newer version syntax
+# csv_string = CSV.generate do |csv|
+#   csv << ["one", "row"]
+#   csv << ["another", "row"]
+# end
+# puts csv_string
 
 # read a csv file
-CSV.read("./test.csv")
-puts csv_string
+csv_string = CSV.read("./test.csv")
+p csv_string
 # => [["one", "two"]["another", "row"]]
 
 # JSON
 # load the json library
 require 'json'
 ruby_hash = {
-  one: "one",
-  two: "two"
+  :one => "one",
+  :two => "two"
 }
 # convert to a json string 
 json_string = ruby_hash.to_json
-File.open("./test.json", 'w+') do |f|
+File.open("./test.json", 'w') do |f|
   f.write(json_string)
 end
 
@@ -79,6 +82,7 @@ p ruby_hash
 # => {:one=>"one",:two=>"two"}
 
 # Nokogiri gem: http://www.nokogiri.org/
+# run > gem install nokogiri
 require 'pp'
 require 'nokogiri'
 xml_string = File.read("./google_sitemap.xml")

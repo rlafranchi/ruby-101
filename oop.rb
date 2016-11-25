@@ -57,9 +57,9 @@ p Person.ancestors
 # => [Person, Object, Kernel, BasicObject]
 
 1.class
-# => Integer
-p Integer.ancestors
-# => [Integer, Numeric, Comparable, Object, Kernel, BasicObject] 
+# => Fixnum
+p Fixnum.ancestors
+# => [Fixnum, Integer, Numeric, Comparable, Object, Kernel, BasicObject] 
 
 "String".class
 # => String
@@ -80,3 +80,33 @@ class Person
   end
 end
 Object.send(:remove_const, :Person)
+
+# inheritance
+class Mammal
+  def initialize
+    puts "I'm a #{self.class}"
+  end
+end
+
+class Dog < Mammal
+  def speak
+    puts "Bark"
+  end
+end
+
+class Cat < Mammal
+  def speak
+    puts "Meow"
+  end
+end
+
+Mammal.new
+# I'm a mammal
+cat = Cat.new
+# I'm a Cat
+cat.speak
+# Meow
+dog = Dog.new
+# I'm a Dog
+dog.speak
+# Bark

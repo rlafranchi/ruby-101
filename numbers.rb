@@ -14,7 +14,7 @@ p result
 5.3.ceil
 # => 6
 
-5.6666.round(2)
+5.6666.round
 # => 5.67
 
 3 / 4
@@ -31,8 +31,8 @@ str = "A"
 str * 2
 # AA
 
-str + 1
-# => TypeError: no implicit conversion of Fixnum into String
+# str + 1
+# => cannot convert Fixnum into String
 
 puts "#{str}#{integer}"
 # A1

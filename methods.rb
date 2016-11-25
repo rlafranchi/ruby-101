@@ -75,11 +75,11 @@ args("first","second")
 
 # Keyword arguments
 # Ruby 2.0 and above
-def k_args(one: 'default', two: 'default')
-  puts one
-  puts two
-end
+# def k_args(one: 'default', two: 'default')
+#   puts one
+#   puts two
+# end
 
-k_args(two: "two", one: "one")
+# k_args(two: "two", one: "one")
 # one
 # two 
