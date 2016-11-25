@@ -5,29 +5,12 @@ Ruby Version Manager (rvm): https://rvm.io
 Free Ruby Book: https://launchschool.com/books/ruby
 Free Ruby OOP Book: https://launchschool.com/books/oo_ruby
 
-* Integers / Floats
+* Numbers
 * Strings
 * Arrays
-    * iterating
-    * map
-    * group_by
-    * each / each_with_index
-    * select
-    * sort
-    * sort_by
 * Hashes
-    * iterating
-    * keys
-    * values
-    * each
-    * symbols vs strings
-* Conditionals / Comparison Oprators
-* methods
-    * blocks
-    * args
-* OOP
-    * constructors
-    * instance vs class
-    * getters / setters attr_accessors
+* Conditionals / Comparison Operators
+* Methods
+* OOP - Object Oriented Programming
 * Files
 * WEB calls
