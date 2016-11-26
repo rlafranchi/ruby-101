@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+require 'cgi'
 
 class Link
   attr_accessor :url, :title, :description
@@ -10,7 +11,7 @@ class Page
   attr_reader :next, :previous, :links
 
   def initialize(query, start=nil)
-    res = open("https://www.google.com/search?q=#{query}&start=#{start}")
+    res = open("https://www.google.com/search?q=#{CGI::escape(query)}&start=#{start}")
     @doc = Nokogiri::HTML.parse(res.read)
     @next = start.to_i + 10
     @previous = start.to_i - 10
@@ -25,8 +26,9 @@ class Page
       link = Link.new
       link.title = result.css('.r').text
       link.url = result.css('.s cite').text
+      link.url = link.url[0..3] == 'http' ? link.url : "http://#{link.url}"
       link.description = result.css('.s span.st').text
-      @links << link
+      @links << link unless link.description.empty?
     end
   end
 
@@ -41,8 +43,14 @@ class Google
 
   private
 
+  def begin_search
+    puts "Welcome to Google, What would you like to search for?"
+    @search = gets.chomp!.to_s
+    query
+  end
+
   def query
-    puts "\n\nGetting Search Results"
+    puts "\n\nGetting Search Results..."
     @current_page = Page.new(@search)
   end
 
@@ -73,7 +81,7 @@ class Google
     if request.to_i > 0
       link = @current_page.links[request.to_i - 1]
       if link
-        `open #{link.url}`
+        `open "#{link.url}"`
       else
         puts "Invalid Request...\n\n"
       end
@@ -90,18 +98,13 @@ class Google
     end
   end
 
-  def begin_search
-    puts "Welcome to Google, What would you like to search for?"
-    @search = gets.chomp!.to_s
-    query
-  end
-
   def print_results
     puts "\n\n\n"
     puts "Google Results for #{@search}"
     puts "========================================"
     @current_page.links.each_with_index do |link, i| 
-      puts "#{i + 1}: #{link.title} (#{link.url})"
+      puts "#{i + 1}:\t#{link.title}"
+      puts "\t#{link.url}"
       slice_description(link.description)
       puts "========================================"
     end
@@ -115,9 +118,9 @@ class Google
   end
 
   def slice_description(description)
-    words = description.split(" ")
-    words.each_slice(5) do |slice|
-      puts "   #{slice.join(" ")}"
+    words = description.gsub("\n", " ").split(" ")
+    words.each_slice(10) do |slice|
+      puts "\t#{slice.join(" ")}"
     end
   end
 end

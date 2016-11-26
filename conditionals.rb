@@ -23,6 +23,12 @@ end
   end
 end
 
+# conditional at the end
+puts "Hey there" if true
+
+# unless is basically the same as not true
+puts "This will not happen" unless true
+
 a = true
 b = false
 
